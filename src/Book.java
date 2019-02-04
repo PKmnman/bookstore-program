@@ -1,8 +1,6 @@
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /*************************************************************************************
@@ -18,16 +16,22 @@ public class Book extends InventoryItem implements Serializable {
 	private String title, author, publisher;
 	private Genre genre;
 	private int numOfPages;
-	private long iSBN;
+	private ISBN iSBN;
 	private GregorianCalendar publishDate;
 	
-	public Book(String title, String author, String genre, long iSBN){
+	public Book(String title, String author, String genre, ISBN iSBN){
 		this.title = title;
 		this.author = author;
 		this.genre = Genre.toGenre(genre);
 		this.iSBN = iSBN;
-		this.setId(this.iSBN);
 		this.setItem(this);
+	}
+	
+	public Book(String title, String author){
+		this.title = title;
+		this.author = author;
+		this.genre = null;
+		
 	}
 	
 	@SuppressWarnings("MagicConstant")
@@ -75,11 +79,11 @@ public class Book extends InventoryItem implements Serializable {
 		this.numOfPages = numOfPages;
 	}
 	
-	public long getiSBN() {
+	public ISBN getiSBN() {
 		return iSBN;
 	}
 	
-	public void setiSBN(long iSBN) {
+	public void setiSBN(ISBN iSBN) {
 		this.iSBN = iSBN;
 	}
 	

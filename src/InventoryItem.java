@@ -1,7 +1,5 @@
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Locale;
 
 /*************************************************************************************
@@ -14,7 +12,7 @@ import java.util.Locale;
  *************************************************************************************/
 public class InventoryItem implements Serializable {
 	
-	private long id, quantity;
+	private int quantity;
 	private double price;
 	private Book item;
 	
@@ -25,12 +23,10 @@ public class InventoryItem implements Serializable {
 	}
 	
 	public InventoryItem(Book item){
-		this.id = item.getiSBN();
 		this.item = item;
 	}
 	
 	public InventoryItem(){
-		this.id = -1;
 		this.quantity = 0;
 		this.item = null;
 		this.price = 0.0;
@@ -68,14 +64,6 @@ public class InventoryItem implements Serializable {
 	
 	public void setItem(Book item) {
 		this.item = item;
-	}
-	
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
 	}
 	
 }
